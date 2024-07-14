@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptography Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .output, textarea {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+            font-family: monospace;
+            word-break: break-all;
+            white-space: pre-wrap;
+        }
+        textarea {
+            height: 100px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border: none;
+            background: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        img {
+            max-width: 100%; /* Make image responsive */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 10px;
+        }
+        .image-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .image-output {
+            margin-top: 10px;
+        }
+        #decrypted-image-output img {
+            max-width: 600px; /* Increase max-width for decrypted image */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cryptography Project</h1>
+        <button onclick="generateRSAKeys()">Generate RSA Keys</button>
+        <div id="rsa-keys-output" class="output"></div>
+
+        <button onclick="generateSymmetricKeys()">Generate Symmetric Keys</button>
+        <div id="symmetric-keys-output" class="output"></div>
+
+        <button onclick="encryptSymmetricKeys()">Encrypt Symmetric Keys</button>
+        <div id="encrypted-symmetric-keys-output" class="output"></div>
+
+        <button onclick="decryptSymmetricKeys()">Decrypt Symmetric Keys</button>
+        <div id="decrypted-symmetric-keys-output" class="output"></div>
+
+        <textarea id="message" placeholder="Enter a message for signing..."></textarea>
+        <button onclick="signMessage()">Sign Message</button>
+        <div id="signature-output" class="output"></div>
+
+        <button onclick="verifySignature()">Verify Signature</button>
+        <div id="verification-output" class="output"></div>
+
+        <div class="image-container">
+            <input type="file" id="image-file" accept="image/*" onchange="previewImage()">
+            <img id="image-preview" alt="Image Preview">
+        </div>
+        
+        <p>Encrypt and decrypt the selected image using AES-CBC-128:</p>
+        <button id="encrypt-image-cbc-128">Encrypt Image (AES-CBC-128)</button>
+
+        <p>Encrypt and decrypt the selected image using AES-CBC-256:</p>
+        <button id="encrypt-image-cbc-256">Encrypt Image (AES-CBC-256)</button>
+
+        <p>Encrypt and decrypt the selected image using AES-CTR-256:</p>
+        <button id="encrypt-image-ctr-256">Encrypt Image (AES-CTR-256)</button>
+
+        <div id="image-processing-output" class="output"></div>
+        
+        <div id="decrypted-image-output" class="image-output">
+            <p id="decrypted-image-label">Decrypted Image:</p>
+        </div>
+    </div>
+
+    <script src="crypto.js"></script>
+</body>
+</html>
